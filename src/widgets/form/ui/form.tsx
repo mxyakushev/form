@@ -31,7 +31,7 @@ export const Form = () => {
   useGate(model.Gate)
   return (
     <>
-      <div className='p-3'>
+      <div className='p-3 grow flex items-center flex-col justify-center'>
         <div className='mb-[30px] flex justify-center'>
           <Logo />
         </div>
@@ -132,7 +132,7 @@ export const Form = () => {
           </Button>
         </form>
       </div>
-      <div className='text-[15px] font-light text-white flex justify-center'>
+      <div className='text-[15px] grow-0 font-light text-white flex justify-center'>
         If you have an account,
         <div className='w-[42px] ml-1 text-center'>
           <HighlightText>Log in</HighlightText>
