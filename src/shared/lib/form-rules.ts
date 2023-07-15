@@ -15,27 +15,6 @@ export const formRules = {
       errorText: 'Email is not correct'
     })
   }),
-  letters: (): Rule<string> => ({
-    name: 'letters',
-    validator: value => ({
-      isValid: /^[A-Za-z]+$/.test(value),
-      errorText: 'Letters only'
-    })
-  }),
-  lettersSpaces: (): Rule<string> => ({
-    name: 'lettersSpaces',
-    validator: value => ({
-      isValid: /^[A-z\s.-]+$/.test(value),
-      errorText: 'Letters and spaces only'
-    })
-  }),
-  lettersNumbers: (): Rule<string> => ({
-    name: 'lettersNumbers',
-    validator: value => ({
-      isValid: /^[A-Za-z0-9]+$/.test(value),
-      errorText: 'Letters and numbers only'
-    })
-  }),
   minLength: (min: number, fieldName: string): Rule<string> => ({
     name: 'minLength',
     validator: value => ({

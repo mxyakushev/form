@@ -6,24 +6,12 @@ export const FormFields = createForm({
   fields: {
     firstName: {
       init: '',
-      rules: [
-        formRules.required(),
-        formRules.minLength(2, 'name'),
-        formRules.maxLength(15, 'name'),
-        formRules.letters(),
-        formRules.trim()
-      ],
+      rules: [formRules.required(), formRules.minLength(2, 'name'), formRules.maxLength(15, 'name'), formRules.trim()],
       validateOn: ['submit', 'change']
     },
     secondName: {
       init: '',
-      rules: [
-        formRules.required(),
-        formRules.minLength(2, 'name'),
-        formRules.maxLength(15, 'name'),
-        formRules.letters(),
-        formRules.trim()
-      ],
+      rules: [formRules.required(), formRules.minLength(2, 'name'), formRules.maxLength(15, 'name'), formRules.trim()],
       validateOn: ['submit', 'change']
     },
     country: {
