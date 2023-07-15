@@ -8,7 +8,7 @@ export const getCountries = async () => {
     console.error(err)
   }
 
-  return response?.data.map((value: any) => {
+  return response?.data.map((value: { name: { common: string }; idd: { root: string; suffixes: string[] } }) => {
     return { country: value.name.common, code: value.idd.root + value.idd.suffixes }
   })
 }
