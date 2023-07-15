@@ -38,7 +38,7 @@ export const Form = () => {
         <HeadingText className='mb-[55px]'>
           <span className='text-theme'>Sign Up</span> and find the best place to rest while traveling
         </HeadingText>
-        <form className='mb-[30px]'>
+        <form className='mb-[30px] w-full'>
           <div className='flex justify-center flex-col sm:flex-row'>
             <div className='sm:mr-[15px] sm:w-[49%]'>
               <FormInput
