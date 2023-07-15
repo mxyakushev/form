@@ -30,112 +30,114 @@ export const Form = () => {
 
   useGate(model.Gate)
   return (
-    <div className='p-3'>
-      <div className='mb-[30px] flex justify-center'>
-        <Logo />
-      </div>
-      <HeadingText className='mb-[55px]'>
-        <span className='text-theme'>Sign Up</span> and find the best place to rest while traveling
-      </HeadingText>
-      <form className='mb-[30px]'>
-        <div className='flex justify-center flex-col sm:flex-row'>
-          <div className='sm:mr-[15px] sm:w-[49%]'>
-            <FormInput
-              icon={FirstNameIcon}
-              className='mb-[30px]'
-              label='First Name'
-              field={fields.firstName}
-              errorText={errorText('firstName')}
-              isError={!!fields.firstName?.errors}
-            />
-            <FormDropdown
-              icon={CountryIcon}
-              className='mb-[30px]'
-              label='Country'
-              options={filteredCountries}
-              field={fields.country}
-              errorText={errorText('country')}
-              filterDropdown={val => model.filterDropDown(val)}
-            />
-            <FormInput
-              type='password'
-              icon={PasswordIcon}
-              className='mb-[30px]'
-              label='Password'
-              field={fields.password}
-              errorText={errorText('password')}
-              isError={!!fields.password?.errors}
-            />
-            <FormInput
-              type='email'
-              icon={EmailIcon}
-              className='mb-[30px]'
-              label='Email'
-              field={fields.email}
-              errorText={errorText('email')}
-              isError={!!fields.email?.errors}
-            />
-          </div>
-          <div className='sm:ml-[15px] sm:w-[49%]'>
-            <FormInput
-              icon={SecondNameIcon}
-              className='mb-[30px]'
-              label='Second Name'
-              field={fields.secondName}
-              errorText={errorText('secondName')}
-              isError={!!fields.secondName?.errors}
-            />
-            <FormInput
-              type='tel'
-              icon={PhoneIcon}
-              className='mb-[30px]'
-              label='Phone'
-              field={fields.phone}
-              errorText={errorText('phone')}
-              mask={fields.country}
-              isError={!!fields.phone?.errors}
-            />
-            <FormInput
-              type='password'
-              icon={ConfirmPasswordIcon}
-              className='mb-[30px]'
-              label='Confirm Password'
-              field={fields.confirmPassword}
-              errorText={'Password does not match'}
-              isError={fields.password?.value !== fields.confirmPassword?.value}
-            />
-            <Checkbox
-              label={
-                <div className='text-[15px] font-light text-white flex'>
-                  I agree to the
-                  <div className='w-[135px] ml-0.5 text-center'>
-                    <HighlightText>Terms & Conditions</HighlightText>
-                  </div>
-                </div>
-              }
-              field={fields.checkbox}
-              className='mb-[30px]'
-              id='checkbox'
-              name='checkbox'
-            />
-          </div>
+    <>
+      <div className='p-3'>
+        <div className='mb-[30px] flex justify-center'>
+          <Logo />
         </div>
-        <Button
-          onClick={() => {
-            if (fields.password?.value === fields.confirmPassword?.value) {
-              submit()
-            }
-          }}
-        >
-          Sign Up
-        </Button>
-      </form>
+        <HeadingText className='mb-[55px]'>
+          <span className='text-theme'>Sign Up</span> and find the best place to rest while traveling
+        </HeadingText>
+        <form className='mb-[30px]'>
+          <div className='flex justify-center flex-col sm:flex-row'>
+            <div className='sm:mr-[15px] sm:w-[49%]'>
+              <FormInput
+                icon={FirstNameIcon}
+                className='mb-[30px]'
+                label='First Name'
+                field={fields.firstName}
+                errorText={errorText('firstName')}
+                isError={!!fields.firstName?.errors}
+              />
+              <FormDropdown
+                icon={CountryIcon}
+                className='mb-[30px]'
+                label='Country'
+                options={filteredCountries}
+                field={fields.country}
+                errorText={errorText('country')}
+                filterDropdown={val => model.filterDropDown(val)}
+              />
+              <FormInput
+                type='password'
+                icon={PasswordIcon}
+                className='mb-[30px]'
+                label='Password'
+                field={fields.password}
+                errorText={errorText('password')}
+                isError={!!fields.password?.errors}
+              />
+              <FormInput
+                type='email'
+                icon={EmailIcon}
+                className='mb-[30px]'
+                label='Email'
+                field={fields.email}
+                errorText={errorText('email')}
+                isError={!!fields.email?.errors}
+              />
+            </div>
+            <div className='sm:ml-[15px] sm:w-[49%]'>
+              <FormInput
+                icon={SecondNameIcon}
+                className='mb-[30px]'
+                label='Second Name'
+                field={fields.secondName}
+                errorText={errorText('secondName')}
+                isError={!!fields.secondName?.errors}
+              />
+              <FormInput
+                type='tel'
+                icon={PhoneIcon}
+                className='mb-[30px]'
+                label='Phone'
+                field={fields.phone}
+                errorText={errorText('phone')}
+                mask={fields.country}
+                isError={!!fields.phone?.errors}
+              />
+              <FormInput
+                type='password'
+                icon={ConfirmPasswordIcon}
+                className='mb-[30px]'
+                label='Confirm Password'
+                field={fields.confirmPassword}
+                errorText={'Password does not match'}
+                isError={fields.password?.value !== fields.confirmPassword?.value}
+              />
+              <Checkbox
+                label={
+                  <div className='text-[15px] font-light text-white flex'>
+                    I agree to the
+                    <div className='w-[135px] ml-0.5 text-center'>
+                      <HighlightText>Terms & Conditions</HighlightText>
+                    </div>
+                  </div>
+                }
+                field={fields.checkbox}
+                className='mb-[30px]'
+                id='checkbox'
+                name='checkbox'
+              />
+            </div>
+          </div>
+          <Button
+            onClick={() => {
+              if (fields.password?.value === fields.confirmPassword?.value) {
+                submit()
+              }
+            }}
+          >
+            Sign Up
+          </Button>
+        </form>
+      </div>
       <div className='text-[15px] font-light text-white flex justify-center'>
         If you have an account,
         <div className='w-[42px] ml-1 text-center'>
           <HighlightText>Log in</HighlightText>
         </div>
       </div>
-    </div>
+    </>
   )
 }
