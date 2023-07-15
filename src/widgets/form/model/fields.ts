@@ -29,7 +29,7 @@ export const FormFields = createForm({
     },
     phone: {
       init: '',
-      rules: [formRules.required()],
+      rules: [formRules.required(), formRules.maxLength(15, 'phone')],
       validateOn: ['submit', 'change']
     },
     password: {
