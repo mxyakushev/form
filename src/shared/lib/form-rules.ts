@@ -36,13 +36,6 @@ export const formRules = {
       errorText: 'Letters and numbers only'
     })
   }),
-  numbers: (errorText = 'Numbers only'): Rule<string> => ({
-    name: 'numbers',
-    validator: value => ({
-      isValid: /^[0-9]+$/.test(value),
-      errorText
-    })
-  }),
   minLength: (min: number, fieldName: string): Rule<string> => ({
     name: 'minLength',
     validator: value => ({
@@ -64,18 +57,18 @@ export const formRules = {
       errorText
     })
   }),
-  equal: (num: number): Rule<string> => ({
-    name: 'equal',
-    validator: value => ({
-      isValid: +value === num,
-      errorText: 'The number of characters should be ' + num
-    })
-  }),
   password: (): Rule<string> => ({
     name: 'password',
     validator: value => ({
       isValid: /\d/.test(value) && /[a-zA-Z]/.test(value) && /\W/.test(value),
       errorText: 'Password must have 1 letter, 1 number and one symbol'
+    })
+  }),
+  boolean: (errorText = ''): Rule<boolean> => ({
+    name: 'boolean',
+    validator: value => ({
+      isValid: value,
+      errorText
     })
   })
 }

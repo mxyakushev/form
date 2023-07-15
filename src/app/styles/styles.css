@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes underline-on {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+.text-underline-hover::after {
+    display: block;
+    content: '';
+    height: 1px;
+    animation: .3s underline-on;
+}
+
+.text-underline-hover:hover::after {
+    background-color: #6CEEC7;
+    transition: all .3s ease-in-out;
+}

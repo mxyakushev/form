@@ -1,7 +1,36 @@
-export const Checkbox = () => {
+import { ConnectedField } from 'effector-forms'
+import { FC, ReactNode } from 'react'
+
+import { CheckIcon } from '#/shared/ui/icons'
+
+export const Checkbox: FC<{
+  id: string
+  name: string
+  label: ReactNode
+  field: ConnectedField<boolean>
+}> = ({ label, id, name, field }) => {
   return (
-    <div>
-      <input type='checkbox' />
-    </div>
+    <label htmlFor={id} className='flex items-center cursor-pointer py-3'>
+      <div className='relative'>
+        <input
+          id={id}
+          type='checkbox'
+          className='sr-only'
+          checked={field.value}
+          name={name}
+          onChange={() => field.onChange(!field.value)}
+        />
+        <div
+          className={`w-[20px] h-[20px] border-2 border-theme rounded transition duration-300 flex justify-center items-center ${
+            field.value ? 'bg-theme' : 'bg-transparent'
+          }`}
+        >
+          <div className={`transition duration-300 ${field.value ? 'opacity-100' : 'opacity-0'}`}>
+            <CheckIcon />
+          </div>
+        </div>
+      </div>
+      <div className='ml-2 pt-0.5'>{label}</div>
+    </label>
   )
 }

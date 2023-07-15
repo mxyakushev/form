@@ -8,8 +8,8 @@ export const FormFields = createForm({
       init: '',
       rules: [
         formRules.required(),
-        formRules.minLength(2, 'firstName'),
-        formRules.maxLength(15, 'firstName'),
+        formRules.minLength(2, 'name'),
+        formRules.maxLength(15, 'name'),
         formRules.letters(),
         formRules.trim()
       ]
@@ -18,19 +18,27 @@ export const FormFields = createForm({
       init: '',
       rules: [
         formRules.required(),
-        formRules.minLength(2, 'secondName'),
-        formRules.maxLength(15, 'secondName'),
+        formRules.minLength(2, 'name'),
+        formRules.maxLength(15, 'name'),
         formRules.letters(),
         formRules.trim()
       ]
     },
     country: {
-      init: '',
-      rules: [formRules.required()]
+      init: { country: '', code: '' },
+      rules: [
+        {
+          name: 'required',
+          validator: value => ({
+            isValid: !!value.country,
+            errorText: 'Fill in the field'
+          })
+        }
+      ]
     },
     phone: {
       init: '',
-      rules: [formRules.required(), formRules.numbers(), formRules.equal(12)]
+      rules: [formRules.required()]
     },
     password: {
       init: '',
@@ -43,7 +51,12 @@ export const FormFields = createForm({
     email: {
       init: '',
       rules: [formRules.required(), formRules.email()]
+    },
+    checkbox: {
+      init: false,
+      rules: [formRules.boolean()],
+      validateOn: ['submit']
     }
   },
-  validateOn: ['submit']
+  validateOn: ['submit', 'change']
 })
