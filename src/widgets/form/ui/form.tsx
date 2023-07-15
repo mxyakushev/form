@@ -28,6 +28,12 @@ export const Form = () => {
     fn: countries => countries.filter(({ country }) => country.includes(fields.country?.value?.country))
   })
 
+  const onSubmit = () => {
+    if (fields.password?.value === fields.confirmPassword?.value) {
+      submit()
+    }
+  }
+
   useGate(model.Gate)
   return (
     <>
@@ -121,15 +127,7 @@ export const Form = () => {
               />
             </div>
           </div>
-          <Button
-            onClick={() => {
-              if (fields.password?.value === fields.confirmPassword?.value) {
-                submit()
-              }
-            }}
-          >
-            Sign Up
-          </Button>
+          <Button onClick={onSubmit}>Sign Up</Button>
         </form>
       </div>
       <div className='text-[15px] grow-0 font-light text-white flex justify-center'>

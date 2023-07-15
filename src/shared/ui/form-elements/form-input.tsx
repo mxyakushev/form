@@ -17,18 +17,14 @@ export const FormInput: FC<{
   return (
     <div className={`flex relative flex-col items-start sm:max-w-[300px] w-full font-light ${className}`}>
       <div className='absolute top-3 left-4'>{icon()}</div>
-      <div className='absolute top-[13px] left-12 text-white text-[16px]'>{mask?.value.code}</div>
       <input
         type={type}
         id={label}
-        disabled={!mask?.value.code && type === 'tel'}
         placeholder=' '
         autoComplete='off'
-        className={`w-full peer p-3 placeholder-transparent bg-transparent font-light text-white rounded border-white placeholder:text-[#E0E0E0] placeholder:font-light focus:ring-0 transition duration-300 focus:border-theme focus:bg-blackTransparent ${
-          type === 'tel' ? 'pl-[92px]' : 'pl-12'
-        }`}
-        value={field?.value}
-        onChange={e => field?.onChange(e.target.value)}
+        className='w-full peer p-3 placeholder-transparent bg-transparent font-light text-white rounded border-white placeholder:text-[#E0E0E0] placeholder:font-light focus:ring-0 transition duration-300 focus:border-theme focus:bg-blackTransparent pl-12'
+        value={mask?.value ? `${mask.value?.code}${field?.value}` : field?.value}
+        onChange={e => field?.onChange(e.target.value.slice(mask?.value.code.length || 0))}
       />
       <label
         htmlFor={label}
