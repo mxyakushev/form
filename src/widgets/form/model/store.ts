@@ -2,9 +2,8 @@ import { createEffect, createEvent, createStore, sample } from 'effector'
 import { createGate } from 'effector-react'
 
 import { getCountries } from '#/entities/countries/model/api'
-import { FormFields } from '#/widgets/form/model/fields'
 
-import { Countries } from '../types'
+import { FormFields } from './fields'
 
 export const getCountriesFx = createEffect(getCountries)
 export const filterDropDown = createEvent<string>()

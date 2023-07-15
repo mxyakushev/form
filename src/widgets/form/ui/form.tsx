@@ -2,8 +2,7 @@ import { useForm } from 'effector-forms'
 import { useGate, useStoreMap } from 'effector-react'
 
 import { Button } from '#/shared/ui/button'
-import { Checkbox } from '#/shared/ui/checkbox'
-import { FormDropdown, FormInput } from '#/shared/ui/form-elements'
+import { FormCheckbox, FormDropdown, FormInput } from '#/shared/ui/form-elements'
 import { HeadingText } from '#/shared/ui/heading-text'
 import { HighlightText } from '#/shared/ui/highlight-text'
 import {
@@ -108,7 +107,7 @@ export const Form = () => {
               errorText={errorText('email')}
               isError={!!fields.email?.errors}
             />
-            <Checkbox
+            <FormCheckbox
               label={
                 <div className='text-[15px] font-light text-white flex'>
                   I agree to the

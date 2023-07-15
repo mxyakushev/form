@@ -1,4 +1,4 @@
-export type Countries = {
+type Countries = {
   country: string
   code: string
 }

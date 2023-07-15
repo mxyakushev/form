@@ -1,14 +1,24 @@
 import axios from 'axios'
 
-export const getCountries = async () => {
-  let response
+import { CountryAPIResponse } from '../types'
+
+export const getCountries = async (): Promise<Countries[]> => {
+  let response: { data: CountryAPIResponse[] }
+  let result: Countries[]
+
   try {
     response = await axios.get('https://restcountries.com/v3.1/all')
   } catch (err) {
-    console.error(err)
+    throw new Error(`Failed to get countries list: ${err}`)
   }
 
-  return response?.data.map((value: { name: { common: string }; idd: { root: string; suffixes: string[] } }) => {
-    return { country: value.name.common, code: value.idd.root + value.idd.suffixes }
-  })
+  try {
+    result = response.data.map((value: CountryAPIResponse) => {
+      return { country: value.name.common, code: value.idd.root + value.idd.suffixes }
+    })
+  } catch (err) {
+    throw new Error(`Failed to build country properties: ${err}`)
+  }
+
+  return result
 }
