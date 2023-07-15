@@ -115,9 +115,7 @@ export const Form = () => {
                 label={
                   <div className='text-[15px] font-light text-white flex'>
                     I agree to the
-                    <div className='w-[135px] ml-0.5 text-center'>
-                      <HighlightText>Terms & Conditions</HighlightText>
-                    </div>
+                    <HighlightText className='ml-0.5'>Terms & Conditions</HighlightText>
                   </div>
                 }
                 field={fields.checkbox}
@@ -131,10 +129,7 @@ export const Form = () => {
         </form>
       </div>
       <div className='text-[15px] grow-0 font-light text-white flex justify-center'>
-        If you have an account,
-        <div className='w-[42px] ml-1 text-center'>
-          <HighlightText>Log in</HighlightText>
-        </div>
+        If you have an account, <HighlightText className='ml-1'>Log in</HighlightText>
       </div>
     </>
   )

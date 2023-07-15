@@ -46,7 +46,7 @@ export const FormDropdown: FC<{
           type='text'
           id='value'
           value={field.value.country}
-          className='w-full px-3 pt-3.5 h-[50px] pb-3 font-light text-white rounded border bg-transparent placeholder:text-[#E0E0E0] placeholder:font-light pl-12 focus:ring-0 transition duration-300 text-left border-white focus:border-theme focus:bg-blackTransparent'
+          className='w-full px-3 pt-3.5 h-[50px] pb-3 font-light text-white rounded border bg-transparent placeholder:text-[#E0E0E0] placeholder:font-light pl-12 focus:ring-0 transition duration-300 text-left border-white focus:border-theme focus:bg-blackTransparent hover:border-theme'
           onClick={() => setActive(prevState => !prevState)}
           onChange={e => {
             field.onChange({ country: e.target.value, code: '' })
