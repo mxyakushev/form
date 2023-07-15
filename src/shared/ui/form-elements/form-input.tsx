@@ -15,7 +15,7 @@ export const FormInput: FC<{
   mask?: ConnectedField<Countries>
 }> = ({ className, icon, label, field, errorText, type = 'text', mask, isError }) => {
   return (
-    <div className={`flex relative flex-col items-start sm:max-w-[300px] w-full font-light ${className}`}>
+    <div className={`flex relative flex-col items-start w-full font-light ${className}`}>
       <div className='absolute top-3 left-4'>{icon()}</div>
       <input
         type={type}

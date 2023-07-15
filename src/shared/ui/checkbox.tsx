@@ -11,7 +11,10 @@ export const Checkbox: FC<{
   className?: string
 }> = ({ label, id, name, field, className }) => {
   return (
-    <label htmlFor={id} className={`flex items-center cursor-pointer py-3 group ${className ?? ''}`}>
+    <label
+      htmlFor={id}
+      className={`flex w-full justify-start items-center cursor-pointer py-3 group ${className ?? ''}`}
+    >
       <div className='relative'>
         <input
           id={id}

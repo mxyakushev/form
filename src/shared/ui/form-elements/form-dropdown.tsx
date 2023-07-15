@@ -30,8 +30,8 @@ export const FormDropdown: FC<{
   }, [])
 
   return (
-    <div ref={ref} className='relative sm:max-w-[300px] w-full'>
-      <div className={`z-0 relative flex ${className ?? ''}`}>
+    <div ref={ref} className={`relative w-full ${className ?? ''}`}>
+      <div className='z-0 relative flex'>
         <div className='absolute top-3 left-4'>{icon()}</div>
         <div
           className={`absolute top-3 right-4 ${
@@ -55,7 +55,7 @@ export const FormDropdown: FC<{
         />
         <label
           htmlFor='value'
-          className={`absolute duration-300 top-3 font-light left-12 -z-1 origin-0 text-gray-500 ${
+          className={`absolute w-full duration-300 top-3 font-light left-12 -z-1 origin-0 text-gray-500 ${
             field.value.country ? 'top-0.5 text-[10px] text-theme' : 'top-3 text-[#E0E0E0]'
           }`}
         >
