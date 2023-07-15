@@ -8,13 +8,14 @@ export const FormInput: FC<{
   className?: string
   icon: () => JSX.Element
   label: string
-  field: ConnectedField<string>
+  field?: ConnectedField<string>
   errorText: string
+  isError: boolean
   type?: 'password' | 'email' | 'text' | 'tel'
   mask?: ConnectedField<Countries>
-}> = ({ className, icon, label, field, errorText, type = 'text', mask }) => {
+}> = ({ className, icon, label, field, errorText, type = 'text', mask, isError }) => {
   return (
-    <div className={`flex relative flex-col items-start w-[300px] font-light ${className}`}>
+    <div className={`flex relative flex-col items-start sm:max-w-[300px] w-full font-light ${className}`}>
       <div className='absolute top-3 left-4'>{icon()}</div>
       <div className='absolute top-[13px] left-12 text-white text-[16px]'>{mask?.value.code}</div>
       <input
@@ -26,8 +27,8 @@ export const FormInput: FC<{
         className={`w-full peer p-3 placeholder-transparent bg-transparent font-light text-white rounded border-white placeholder:text-[#E0E0E0] placeholder:font-light focus:ring-0 transition duration-300 focus:border-theme focus:bg-blackTransparent ${
           type === 'tel' ? 'pl-[92px]' : 'pl-12'
         }`}
-        value={field.value}
-        onChange={e => field.onChange(e.target.value)}
+        value={field?.value}
+        onChange={e => field?.onChange(e.target.value)}
       />
       <label
         htmlFor={label}
@@ -40,7 +41,7 @@ export const FormInput: FC<{
       >
         {label}
       </label>
-      {!field?.isValid && <ErrorMessage>{errorText}</ErrorMessage>}
+      {isError && <ErrorMessage>{errorText}</ErrorMessage>}
     </div>
   )
 }

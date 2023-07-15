@@ -1,5 +1,7 @@
 import { FC, ReactNode } from 'react'
 
 export const HeadingText: FC<{ children: ReactNode; className?: string }> = ({ children, className }) => {
-  return <div className={`text-white text-[24px] font-medium text-center ${className ?? ''}`}>{children}</div>
+  return (
+    <div className={`text-white text-[19px] sm:text-[24px] font-medium text-center ${className ?? ''}`}>{children}</div>
+  )
 }

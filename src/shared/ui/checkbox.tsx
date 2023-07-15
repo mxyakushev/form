@@ -8,9 +8,10 @@ export const Checkbox: FC<{
   name: string
   label: ReactNode
   field: ConnectedField<boolean>
-}> = ({ label, id, name, field }) => {
+  className?: string
+}> = ({ label, id, name, field, className }) => {
   return (
-    <label htmlFor={id} className='flex items-center cursor-pointer py-3'>
+    <label htmlFor={id} className={`flex items-center cursor-pointer py-3 ${className ?? ''}`}>
       <div className='relative'>
         <input
           id={id}
@@ -22,7 +23,7 @@ export const Checkbox: FC<{
         />
         <div
           className={`w-[20px] h-[20px] border-2 border-theme rounded transition duration-300 flex justify-center items-center ${
-            field.value ? 'bg-theme' : 'bg-transparent'
+            field.value ? 'bg-theme' : field.errors.length ? 'bg-error border-error' : 'bg-transparent'
           }`}
         >
           <div className={`transition duration-300 ${field.value ? 'opacity-100' : 'opacity-0'}`}>

@@ -12,7 +12,8 @@ export const FormFields = createForm({
         formRules.maxLength(15, 'name'),
         formRules.letters(),
         formRules.trim()
-      ]
+      ],
+      validateOn: ['submit', 'change']
     },
     secondName: {
       init: '',
@@ -22,7 +23,8 @@ export const FormFields = createForm({
         formRules.maxLength(15, 'name'),
         formRules.letters(),
         formRules.trim()
-      ]
+      ],
+      validateOn: ['submit', 'change']
     },
     country: {
       init: { country: '', code: '' },
@@ -34,29 +36,31 @@ export const FormFields = createForm({
             errorText: 'Fill in the field'
           })
         }
-      ]
+      ],
+      validateOn: ['submit', 'change']
     },
     phone: {
       init: '',
-      rules: [formRules.required()]
+      rules: [formRules.required()],
+      validateOn: ['submit', 'change']
     },
     password: {
       init: '',
-      rules: [formRules.required(), formRules.minLength(8, 'password'), formRules.password()]
+      rules: [formRules.required(), formRules.minLength(8, 'password'), formRules.password()],
+      validateOn: ['submit', 'change']
     },
     confirmPassword: {
-      init: '',
-      rules: [formRules.required(), formRules.minLength(8, 'confirmPassword'), formRules.password()]
+      init: ''
     },
     email: {
       init: '',
-      rules: [formRules.required(), formRules.email()]
+      rules: [formRules.required(), formRules.email()],
+      validateOn: ['submit', 'change']
     },
     checkbox: {
       init: false,
       rules: [formRules.boolean()],
       validateOn: ['submit']
     }
-  },
-  validateOn: ['submit', 'change']
+  }
 })

@@ -1,5 +1,6 @@
 import { ConnectedField } from 'effector-forms'
-import { FC, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import { ErrorMessage } from '#/shared/ui/error-message'
 import { AngleIcon } from '#/shared/ui/icons'
@@ -12,12 +13,25 @@ export const FormDropdown: FC<{
   options?: Countries[]
   field: ConnectedField<Countries>
   errorText: string
-}> = ({ className, icon, label, options = [], field, errorText }) => {
+  filterDropdown: (val: string) => void
+}> = ({ className, icon, label, options = [], field, errorText, filterDropdown }) => {
   const [active, setActive] = useState(false)
+  const ref = useRef<HTMLDivElement | null>(null)
+  const handleClick = (e: MouseEvent) => {
+    if (ref.current && !ref.current.contains(e.target as Node)) {
+      setActive(false)
+    }
+  }
+  useEffect(() => {
+    document.addEventListener('click', handleClick)
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [])
 
   return (
-    <div className='relative'>
-      <div className={`w-[300px] z-0 relative flex ${className ?? ''}`}>
+    <div ref={ref} className='relative sm:max-w-[300px] w-full'>
+      <div className={`z-0 relative flex ${className ?? ''}`}>
         <div className='absolute top-3 left-4'>{icon()}</div>
         <div
           className={`absolute top-3 right-4 ${
@@ -28,16 +42,17 @@ export const FormDropdown: FC<{
         >
           <AngleIcon />
         </div>
-        <button
+        <input
+          type='text'
           id='value'
-          type='button'
-          className={`w-full px-3 pt-3.5 h-[50px] pb-3 font-light text-white rounded bg-transparent border placeholder:text-[#E0E0E0] placeholder:font-light pl-12 focus:ring-0 transition duration-300 text-left ${
-            active ? 'border-theme' : 'border-white'
-          }`}
+          value={field.value.country}
+          className='w-full px-3 pt-3.5 h-[50px] pb-3 font-light text-white rounded bg-transparent border placeholder:text-[#E0E0E0] placeholder:font-light pl-12 focus:ring-0 transition duration-300 text-left border-white focus:border-theme'
           onClick={() => setActive(prevState => !prevState)}
-        >
-          {field.value.country}
-        </button>
+          onChange={e => {
+            field.onChange({ country: e.target.value, code: '' })
+            filterDropdown(e.target.value)
+          }}
+        />
         <label
           htmlFor='value'
           className={`absolute duration-300 top-3 font-light left-12 -z-1 origin-0 text-gray-500 ${
@@ -47,23 +62,37 @@ export const FormDropdown: FC<{
           {label}
         </label>
       </div>
-      {active && (
-        <div className='absolute w-[300px] h-[200px] top-14 z-50 bg-white p-4 font-light overflow-y-scroll overflow-x-hidden'>
-          {options?.map(option => (
-            <button
-              key={option.country}
-              type='button'
-              className='py-1 min-w-max block cursor-pointer z-50 w-full text-left'
-              onClick={() => {
-                field.onChange(option)
-                setActive(false)
-              }}
-            >
-              {option.country}
-            </button>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.3
+            }}
+            className='absolute w-full rounded max-h-[200px] top-14 z-50 bg-white px-4 py-2 font-light overflow-y-scroll overflow-x-hidden'
+          >
+            {options.length ? (
+              options?.map(option => (
+                <button
+                  key={option.country}
+                  type='button'
+                  className='py-1 min-w-max block cursor-pointer z-50 w-full text-left'
+                  onClick={() => {
+                    field.onChange(option)
+                    setActive(false)
+                  }}
+                >
+                  {option.country}
+                </button>
+              ))
+            ) : (
+              <div>No such countries</div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
       {!field?.isValid && <ErrorMessage>{errorText}</ErrorMessage>}
     </div>
   )

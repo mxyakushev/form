@@ -22,3 +22,17 @@
     background-color: #6CEEC7;
     transition: all .3s ease-in-out;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D0D0D0;
+    border-radius: 5px;
+}
