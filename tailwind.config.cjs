@@ -6,21 +6,6 @@ module.exports = {
     fontFamily: {
       'rubik': ['Rubik', 'sans-serif']
     },
-    extend: {
-      keyframes: {
-        'fadein': {
-          '0%': {
-            opacity: 0,
-          },
-          '100%': {
-            opacity: 1,
-          },
-        },
-      },
-      animation: {
-        'fadein': 'fadein 0.3s both',
-      },
-    },
     colors: {
       theme: '#6CEEC7',
       white: '#fff',
