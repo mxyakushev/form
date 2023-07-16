@@ -21,7 +21,7 @@ export const FormDropdown: FC<{
     ? 'transform rotate-0 transition-transform duration-500 ease-in-out'
     : 'transition-transform rotate-180 duration-500 ease-in-out'
   const inputStyles = field?.isValid && field.isTouched ? 'bg-blackTransparent' : 'bg-transparent'
-  const labelStyles = field.value.country ? 'top-0.5 text-[10px] text-theme' : 'top-3 text-[#E0E0E0]'
+  const labelStyles = field.value.country ? 'top-[3px] text-[10px] text-theme' : 'top-3 text-[#E0E0E0]'
 
   const handleInputChange = (value: string) => {
     field.onChange({ country: value, code: '' })
