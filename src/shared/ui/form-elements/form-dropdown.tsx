@@ -50,7 +50,7 @@ export const FormDropdown: FC<{
         />
         <label
           htmlFor='value'
-          className={`absolute w-full duration-300 top-3 font-light left-12 -z-1 origin-0 text-gray-500 ${labelStyles}`}
+          className={`absolute w-full duration-300 font-light left-12 -z-1 origin-0 text-gray-500 ${labelStyles}`}
         >
           {label}
         </label>
